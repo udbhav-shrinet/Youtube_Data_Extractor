@@ -1,0 +1,9 @@
+{
+  "api_key": "your_youtube_api_key_here",
+  "channel_ids": ["UCRWFSbif-RFENbBrSiez1DA", "other_channel_id_here"],
+  "project_id": "your_project_id_here",
+  "dataset_id": "your_dataset_id_here",
+  "table_id": "your_table_id_here",
+  "bucket_name": "your_bucket_name_here",
+  "credentials_file": "your_google_application_credentials.json"
+}
