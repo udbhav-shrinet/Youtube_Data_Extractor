@@ -1,0 +1,11 @@
+# Ignore credentials JSON file
+your_google_application_credentials.json
+
+# Ignore temporary CSV files
+*.csv
+
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore virtual environment
+venv/
