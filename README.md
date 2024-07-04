@@ -12,12 +12,11 @@
     <li>Install dependencies:</li>
     <pre><code>pip install -r requirements.txt</code></pre>
 
-    <li>Obtain API key from Google Cloud Console and update <code>config.json</code>.</li>
+    Obtain API key from Google Cloud Console and update <code>config.json</code>.
 
-    <li>Set up Google Cloud credentials:</li>
+    Set up Google Cloud credentials:
     <ul>
-      <li>Download service account credentials JSON file and update <code>config.json</code> with the file path.</li>
-    </ul>
+      Download service account credentials JSON file and update <code>config.json</code> with the file path.
   </ol>
 
   <h2>Usage ▶️</h2>
