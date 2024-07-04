@@ -15,7 +15,6 @@
     Obtain API key from Google Cloud Console and update <code>config.json</code>.
 
     Set up Google Cloud credentials:
-    <ul>
       Download service account credentials JSON file and update <code>config.json</code> with the file path.
   </ol>
 
