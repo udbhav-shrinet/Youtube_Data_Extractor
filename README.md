@@ -51,3 +51,8 @@ your_google_application_credentials.json
 </ul>
 
 <p>This setup will help you organize your project on GitHub effectively, making it clear and easy for others to understand and use your YouTube live data fetching script with Google Cloud services. Adjust paths and configurations as per your actual project setup before committing to GitHub.</p>
+
+
+<h2>License</h2>
+
+<p>This project is licensed under the MIT License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
