@@ -39,6 +39,11 @@
   <ul>
     <li>Ensure proper setup of API key, credentials, and configuration variables in <code>config.json</code>.</li>
     <li>Make sure your environment has necessary permissions to access Google Cloud services.</li>
+    <li>Make sure your Big Query Schema mathces the one in the code.</li>
+    <li>Make sure your PubSub, BigQuery and Cloud Storage are in the same region server.</li>
+    <li>In order to fetch data regarding likes, comments, etc. View the Youtube API V3 Documentation</li>
+  
+    
   </ul>
 
   <h2>.gitignore 🔒</h2>
