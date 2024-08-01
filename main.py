@@ -17,8 +17,8 @@ with open('config.json', 'r') as f:
 api_key = config['api_key']
 channel_ids = config['channel_ids']
 project_id = config['project_id']
-dataset_id = config['dataset_id']
-table_id = config['table_id']
+dataset_name = config['dataset_name']
+table_name = config['table_name']
 bucket_name = config['bucket_name']
 credentials_file = config['credentials_file']
 
@@ -32,7 +32,7 @@ gcs_client = storage.Client()
 # Function to fetch live videos, export to CSV, upload to GCS, and load into BigQuery
 @functions_framework.cloud_event
 def hello_pubsub(cloud_event):
-    event_data = base64.b64decode(cloud_event.data["message"]["data"]).decode('utf-8')
+    event_data = base64.b64decode(event["data"]).decode('utf-8')
     print(f"Received event: {event_data}")
     fetch_youtube_live_videos_to_bigquery()
 
@@ -90,7 +90,7 @@ def fetch_youtube_live_videos_to_bigquery():
 
         upload_to_gcs(csv_filename)
         os.remove(csv_filename)
-        load_csv_to_bigquery()
+        load_csv_to_bigquery(csv_filename)
 
 def get_current_viewers(video_id):
     live_stats_url = f'https://www.googleapis.com/youtube/v3/videos?part=liveStreamingDetails&id={video_id}&key={api_key}'
@@ -118,9 +118,9 @@ def upload_to_gcs(filename):
     blob.upload_from_filename(filename)
     print(f'File {filename} uploaded to GCS bucket {bucket_name}.')
 
-def load_csv_to_bigquery():
-    dataset_ref = bq_client.dataset(dataset_id)
-    table_ref = dataset_ref.table(table_id)
+def load_csv_to_bigquery(csv_filename):
+    dataset_ref = bq_client.dataset(dataset_name)
+    table_ref = dataset_ref.table(table_name)
     job_config = bigquery.LoadJobConfig()
     job_config.source_format = bigquery.SourceFormat.CSV
     job_config.skip_leading_rows = 1
@@ -128,7 +128,7 @@ def load_csv_to_bigquery():
     uri = f'gs://{bucket_name}/{csv_filename}'
     load_job = bq_client.load_table_from_uri(uri, table_ref, job_config=job_config)
     load_job.result()
-    print(f'CSV data from {uri} loaded into BigQuery table {table_id}.')
+    print(f'CSV data from {uri} loaded into BigQuery table {table_name}.')
     delete_from_gcs(csv_filename)
 
 def delete_from_gcs(filename):
